@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			class Gempa {
+
+				constructor(skala, lokasi) {
+					this.skala = skala
+					this.lokasi = lokasi
+				}
+
+
+				dampak() {
+					if(this.skala >= 0 && this.skala <= 2) {
+						return {
+							lokasi: this.lokasi,
+							skala: this.skala,
+							dampak: 'Dampaknya tidak terasa'
+						}
+					}
+					else if(this.skala >= 2 && this.skala <= 4) {
+						return {
+							lokasi: this.lokasi,
+							skala: this.skala,
+							dampak: 'Dampaknya bangunan pada retak'
+						}
+					}
+					else if(this.skala >= 4 && this.skala <= 6) {
+						return {
+							lokasi: this.lokasi,
+							skala: this.skala,
+							dampak: 'Dampaknya bangunan pada roboh'
+						}
+					}
+					else if(this.skala >= 6) {
+						return {
+							lokasi: this.lokasi,
+							skala: this.skala,
+							dampak: 'Dampaknya bangunan pada roboh dan berpotensi tsunami'
+						}
+					}
+					else {
+						return 'error'
+					}
+				}
+			}
+			
+			$(document).ready(function() {
+				
+				let data = [
+					{
+						skala: 4,
+						lokasi: 'Kota Coba, Negara Kepulauan Tester'
+					},
+					{
+						skala: 7,
+						lokasi: 'Kota API, Negara Debug'
+					},
+					{
+						skala: 2,
+						lokasi: 'Kota Kecil, Negara Microservice'
+					},
+					{
+						skala: 3,
+						lokasi: 'Kota JavaScript, Negara Jquery Serikat'
+					},
+					{
+						skala: 9,
+						lokasi: 'Kota Lumen, Negara Laravel Lumen'
+					},
+					{
+						skala: 1,
+						lokasi: 'Kota Elasticsearch, Negara Berbayar'
+					},
+					{
+						skala: 2,
+						lokasi: 'Kota MySql, Negara Relationals'
+					},
+					{
+						skala: 5,
+						lokasi: 'Kota Redis, Negara Cache'
+					},
+					{
+						skala: 5,
+						lokasi: 'Kota RabbitMQ, Negara Message Broker'
+					},
+					{
+						skala: 7,
+						lokasi: 'Kota AWS, Negara Amazon Web Service'
+					},
+				]
+
+				
+				data.forEach(element => {
+					// conso
+					console.log(
+						'Skala: '+ element.skala +' Kota : '+ element.lokasi + ' ' + 'Dampaknya: ' + new Gempa(element.skala, element.lokasi).dampak().dampak)
+				});
+
+			})
+		</script>
+  </body>
+</html>
